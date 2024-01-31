@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">AfishaClub</string>
+    <string name="calendar">Календари</string>
+    <string name="go_to_calendar">Перейти к календарю</string>
+    <string name="add_calendar">add_calendar</string>
+    <string name="version">2.1.1</string>
+    <string name="home">HOME</string>
+    <string name="shop">SHOP</string>
+    <string name="delivery">DELIVERY</string>
+    <string name="account">ACCOUNT</string>
+    <string name="search">SEARCH</string>
+    <string name="calendar_month">calendar_month</string>
+    <string name="main">MAIN</string>
+    <string name="settings">SETTINGS</string>
+    <string name="video">VIDEO</string>
+    <string name="location">LOCATION</string>
+    <string name="contacts">CONTACTS</string>
+    <string name="help">HELP</string>
+    <string name="developer">DEVELOPER</string>
+    <string name="open">OPEN</string>
+    <string name="close">CLOSE</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="header_time_start">Начало</string>
+    <string name="header_time_end">Окончание</string>
+    <string name="header_event_description">Описание</string>
+
+
+    <string name="enter_create_account">Введите номер телефона начиная с 7 (без +)</string>
+    <string name="enter_create_code">Придумайте 4 значный код</string>
+
+    <string name="enter_code">Введите 4 значный код от приложения</string>
+    <string name="error_code">Неправильный Код</string>
+    <string name="error_enter_info">Вы некорректно заполнили поля</string>
+
+    <string name="error_not_user">Такого пользователя не существует</string>
+    <string name="error_created_user">Такой пользователь уже существует</string>
+
+    <string name="logout">Выйти из аккаунта</string>
+    <string name="authorization">Войти в аккаунт</string>
+    <string name="registration">Регистрация</string>
+
+    <string name="add_contacts">Добавить Контакты</string>
+    <string name="clear_contacts">Очистить Контакты</string>
+
+    <string name="create_group">Создать Группу</string>
+    <string name="enter_name_group">Введите название группы</string>
+
+    <string name="message_empty_contacts">Контакты не выбраны</string>
+
+
+    <string name="header_group_user">Группы</string>
+
+    <string name="your_admin">Вы администратор</string>
+
+    <string name="message_not_groups">Для Вас нет доступных групп !</string>
+
+
+    <string name="header_event_group_day">День</string>
+    <string name="header_event_group_month">Название месяца</string>
+    <string name="header_event_group_year">Год</string>
+    <string name="header_event_group_time_start">Время начала</string>
+    <string name="header_event_group_time_end">Время окончания</string>
+    <string name="header_event_group_description">Название события</string>
+    <string name="header_create_event">Создать событие</string>
+
+    <string name="header_search_group">Поиск Группы</string>
+
+
+</resources>

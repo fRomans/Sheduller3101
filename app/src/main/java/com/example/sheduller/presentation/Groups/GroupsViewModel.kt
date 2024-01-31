@@ -1,0 +1,39 @@
+package com.example.sheduller.presentation.Groups
+
+import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.sheduller.data.models.EventModel
+import com.example.sheduller.data.models.GroupModel
+import com.example.sheduller.domain.useCase.AuthenticationUseCase
+import com.example.sheduller.domain.useCase.GroupsUseCase
+import kotlinx.coroutines.launch
+
+class GroupsViewModel(private val useCase: GroupsUseCase):
+    ViewModel() {
+    fun createGroup(name: String?, admin:String?, usersAdmin:String?, context: Context) {
+        useCase.createGroup(name, admin, usersAdmin, context)
+    }
+
+    fun loadGroups():
+            LiveData<List<GroupModel>> {
+        return useCase.loadGroups()
+    }
+
+    fun loadSearchGroups(name:String):
+            LiveData<List<GroupModel>> {
+        return useCase.loadSearchGroups(name)
+    }
+
+    fun loadContactsGroup(admin:String, idGroup:Int):
+            LiveData<List<String>> {
+        return useCase.loadContactsGroup(admin, idGroup)
+    }
+
+
+    fun migration(user:String, context: Context) = viewModelScope.launch {
+        useCase.startMigration(user, context)
+
+    }
+}

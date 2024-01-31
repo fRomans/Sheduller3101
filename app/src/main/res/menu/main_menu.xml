@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/homeMenu"
+            android:icon="@drawable/home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/shopMenu"
+            android:icon="@drawable/shop"
+            android:title="@string/shop" />
+        <item
+            android:id="@+id/favoritesMenu"
+            android:icon="@drawable/add_calendar"
+            android:title="@string/add_calendar"/>
+        <item
+            android:id="@+id/accountMenu"
+            android:icon="@drawable/account"
+            android:title="@string/account" />
+        <item
+            android:id="@+id/contactMenu"
+            android:icon="@drawable/contacts"
+            android:title="@string/contacts"/>
+
+    </group>
+
+    <item
+        android:title="@string/main">
+        <menu>
+            <item
+                android:id="@+id/videoMenu"
+                android:icon="@drawable/video"
+                android:title="@string/video"/>
+            <item
+                android:id="@+id/locationMenu"
+                android:icon="@drawable/location"
+                android:title="@string/location"/>
+            <item
+                android:id="@+id/settingsMenu"
+                android:icon="@drawable/settings"
+                android:title="@string/settings"/>
+        </menu>
+    </item>
+
+    <item
+        android:title="@string/contacts">
+        <menu>
+            <item
+                android:id="@+id/helpMenu"
+                android:icon="@drawable/help"
+                android:title="@string/help"/>
+            <item
+                android:id="@+id/developerMenu"
+                android:icon="@drawable/developer"
+                android:title="@string/developer"/>
+
+        </menu>
+    </item>
+
+</menu>

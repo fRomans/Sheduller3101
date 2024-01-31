@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/searchImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_profile">
+    </ImageView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@id/searchImage"
+        android:text="calendarname"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/ImageOnline"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        app:civ_border_color="@color/teal_200"
+        app:civ_border_width="18dp"
+        android:layout_below="@id/user_name"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@id/searchImage"
+        android:layout_marginLeft="-15dp"
+        android:visibility="gone"
+        android:src="@drawable/ic_profile">
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/ImageOffline"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        app:civ_border_color="#1B5E5E60"
+        app:civ_border_width="18dp"
+        android:layout_below="@id/user_name"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@id/searchImage"
+        android:layout_marginLeft="-15dp"
+        android:visibility="gone"
+        android:src="@drawable/ic_profile">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/lastMessageTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_name"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="14dp"
+        android:layout_toRightOf="@id/searchImage"
+        android:text="15:34"
+        android:visibility="gone"
+        android:textStyle="bold" />
+
+</RelativeLayout>
