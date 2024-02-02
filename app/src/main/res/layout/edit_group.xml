@@ -16,6 +16,17 @@
         android:textColor="@color/black" />
 
     <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/edit_group_arrow_back_Search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:src="@drawable/arrow_back"
+        app:layout_constraintTop_toBottomOf="@id/id_group"
+        tools:ignore="MissingConstraints" />
+
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/add_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
