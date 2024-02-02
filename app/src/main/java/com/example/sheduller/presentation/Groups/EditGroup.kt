@@ -1,6 +1,7 @@
 package com.example.sheduller.presentation.Groups
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sheduller.R
 import com.example.sheduller.databinding.EditGroupBinding
+import com.example.sheduller.presentation.ScreenApp
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EditGroup : AppCompatActivity() {
@@ -23,6 +25,13 @@ class EditGroup : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = EditGroupBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+        binding?.editGroupArrowBackSearch?.setOnClickListener{
+
+            val intent = Intent(this@EditGroup, ScreenApp::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         idGroup = intent.getStringExtra("idGroup")?.toInt()
 
