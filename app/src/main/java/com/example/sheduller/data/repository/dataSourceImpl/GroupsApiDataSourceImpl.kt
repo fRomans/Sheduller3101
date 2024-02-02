@@ -31,6 +31,19 @@ class GroupsApiDataSourceImpl(private val dataSource: GroupsDataSource):GroupsAp
     }
 
 
+    override fun updateContactsGroupApi(id:Int?, usersGroup:String?, context: Context) {
+        val call: Call<ResponseBody?>? = ApiClient.instance?.api?.updateContactsGroupApi(id, usersGroup)
+        call?.enqueue(object : Callback<ResponseBody?> {
+            override fun onResponse(call: Call<ResponseBody?>, response: Response<ResponseBody?>) {
+                Toast.makeText(context, "Группа Обновлена", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
+                Toast.makeText(context, "ВКЛЮЧИТЕ ИНТЕРНЕТ", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     override fun startMigration (user:String, context: Context) {
 
         val call = ApiClient.instance?.api?.loadGroups(user)

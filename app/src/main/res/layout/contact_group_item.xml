@@ -24,13 +24,14 @@
             android:layout_margin="10dp"
             android:textColor="@color/white"/>
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/delete_contact"
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/select_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/phone_contact"
-            app:layout_constraintRight_toRightOf="parent"
-            android:src="@drawable/delete"/>
+            android:backgroundTint="@color/white"
+            android:theme="@style/MyCheckBox"
+            app:layout_constraintRight_toRightOf="parent"/>
 
 
 

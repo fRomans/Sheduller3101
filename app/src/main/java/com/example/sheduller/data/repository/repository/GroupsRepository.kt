@@ -20,6 +20,15 @@ class GroupsRepository (private val apiDataSource: GroupsApiDataSource,
         apiDataSource.createGroup(name, admin, usersAdmin, context)
     }
 
+    override fun updateContactsGroupApi(id:Int?, usersGroup:String?, context: Context) {
+        apiDataSource.updateContactsGroupApi(id, usersGroup, context)
+    }
+
+
+    override fun updateContactsGroup(model: GroupModel) {
+        dataSource.updateContactsGroup(model)
+    }
+
     override fun loadGroups(): LiveData<List<GroupModel>> {
         return dataSource.loadGroups()
     }

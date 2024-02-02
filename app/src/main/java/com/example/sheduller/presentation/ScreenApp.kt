@@ -245,6 +245,8 @@ class ScreenApp : AppCompatActivity(),LoadContent {
 
         val intent = Intent(this, EditGroup::class.java).apply {
             putExtra("idGroup", model.id.toString())
+            putExtra("name", model.name)
+            putExtra("admin", model.admin)
         }
         startActivity(intent)
 

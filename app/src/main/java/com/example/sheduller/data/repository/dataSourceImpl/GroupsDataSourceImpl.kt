@@ -20,6 +20,11 @@ class GroupsDataSourceImpl (private val dao: GroupsDao):
             dao.insert(model)}
     }
 
+    override fun updateContactsGroup(model: GroupModel) {
+        CoroutineScope(Dispatchers.IO).launch {
+            dao.updateContactsGroup(model)}
+    }
+
     override fun loadGroups(): LiveData<List<GroupModel>> {
         return dao.loadGroups()
     }

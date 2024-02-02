@@ -10,4 +10,6 @@ interface GroupsCall {
     fun loadSearchGroups(name:String): LiveData<List<GroupModel>>
     fun loadContactsGroup(admin:String, idGroup:Int): LiveData<List<String>>
     suspend fun startMigration(user:String, context: Context)
+    fun updateContactsGroupApi(id:Int?, usersGroup:String?, context: Context)
+    fun updateContactsGroup(model: GroupModel)
 }

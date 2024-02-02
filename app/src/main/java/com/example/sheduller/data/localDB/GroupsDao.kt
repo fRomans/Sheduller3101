@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.sheduller.data.models.EventModel
 import com.example.sheduller.data.models.GroupModel
 
@@ -21,6 +22,9 @@ interface GroupsDao {
 
     @Query("SELECT groups_users_group FROM groups_data_table  WHERE groups_admin = :admin AND groups_id = :idGroup" )
     fun loadContactsGroup(admin:String, idGroup:Int): LiveData<List<String>>
+
+    @Update
+    suspend fun updateContactsGroup(model: GroupModel)
 
 
 //    @Query("SELECT * FROM groups_data_table  WHERE groups_admin = :admin" )

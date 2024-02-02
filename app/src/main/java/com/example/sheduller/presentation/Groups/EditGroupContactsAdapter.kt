@@ -3,11 +3,12 @@ package com.example.sheduller.presentation.Groups
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sheduller.databinding.ContactGroupItemBinding
 
 class EditGroupContactsAdapter( private val contactsList:ArrayList<EditGroupContactsModel>,
-                                private var deleteContact: (EditGroupContactsModel) -> Unit)
+                                private var actionsContact: (EditGroupContactsModel, String) -> Unit)
     : RecyclerView.Adapter<EditGroupContactsAdapter.GroupEditContactsHolder>() {
 
 
@@ -24,7 +25,7 @@ class EditGroupContactsAdapter( private val contactsList:ArrayList<EditGroupCont
     }
 
     override fun onBindViewHolder(holder: GroupEditContactsHolder, position: Int) {
-        holder.bind(contactsList[position], deleteContact)
+        holder.bind(contactsList[position], actionsContact)
 
     }
 
@@ -40,15 +41,24 @@ class EditGroupContactsAdapter( private val contactsList:ArrayList<EditGroupCont
     class GroupEditContactsHolder(val binding: ContactGroupItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
-            model: EditGroupContactsModel, deleteContact: (EditGroupContactsModel) -> Unit
+            model: EditGroupContactsModel, actionsContact: (EditGroupContactsModel, String) -> Unit
 
         ) {
 
             binding.phoneContact.text = model.contact
 
 
-            binding.deleteContact.setOnClickListener(View.OnClickListener {
-                deleteContact(model)
+            binding.selectContact.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+                if (isChecked) {
+                    actionsContact(model, "add")
+                }
+
+                else{
+                    actionsContact(model, "delete")
+                }
+
+
+
             })
 
 

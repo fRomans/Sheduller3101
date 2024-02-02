@@ -8,6 +8,7 @@ interface GroupsDataSource {
     fun loadGroups(): LiveData<List<GroupModel>>
     fun loadSearchGroups(name:String): LiveData<List<GroupModel>>
     fun loadContactsGroup(admin:String, idGroup:Int): LiveData<List<String>>
+    fun updateContactsGroup(model: GroupModel)
 
 
     suspend fun clear()

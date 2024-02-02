@@ -24,6 +24,15 @@
         app:layout_constraintTop_toBottomOf="@id/id_group"
         tools:ignore="MissingConstraints" />
 
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/edit_contacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/id_group"
+        app:layout_constraintRight_toLeftOf="@id/add_contact"
+        android:src="@drawable/delete"
+        />
+
 
 
     <androidx.appcompat.widget.AppCompatImageButton

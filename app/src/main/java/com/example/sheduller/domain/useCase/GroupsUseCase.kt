@@ -14,6 +14,20 @@ class GroupsUseCase(private val call: GroupsCall) {
 
     }
 
+    fun updateContactsGroupApi(id:Int?, usersGroup:String?, context: Context) {
+
+        call.updateContactsGroupApi(id, usersGroup, context)
+
+    }
+
+
+
+    fun updateContactsGroup (model: GroupModel) {
+
+        call.updateContactsGroup(model)
+
+    }
+
     fun loadGroups(): LiveData<List<GroupModel>> {
 
         return call.loadGroups()

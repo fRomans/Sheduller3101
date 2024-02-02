@@ -16,6 +16,14 @@ class GroupsViewModel(private val useCase: GroupsUseCase):
         useCase.createGroup(name, admin, usersAdmin, context)
     }
 
+    fun updateContactsGroupApi(id:Int?, usersGroup:String?, context: Context) {
+        useCase.updateContactsGroupApi(id, usersGroup, context)
+    }
+
+    fun updateContactsGroup(model: GroupModel) {
+        useCase.updateContactsGroup(model)
+    }
+
     fun loadGroups():
             LiveData<List<GroupModel>> {
         return useCase.loadGroups()

@@ -38,6 +38,13 @@ interface ApiInterface {
         @Field("users_group") usersGroup: String?
     ): Call<ResponseBody?>?
 
+    @FormUrlEncoded
+    @POST("updateContactsGroup.php")
+    fun updateContactsGroupApi(
+        @Field("id") id: Int?,
+        @Field("users_group") usersGroup: String?
+    ): Call<ResponseBody?>?
+
     @GET("loadGroups.php")
     fun loadGroups(@Query("user") user: String):
             Call<ArrayList<GroupApiModel>>
