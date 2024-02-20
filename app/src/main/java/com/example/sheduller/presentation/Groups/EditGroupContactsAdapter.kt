@@ -44,8 +44,11 @@ class EditGroupContactsAdapter( private val contactsList:ArrayList<EditGroupCont
             model: EditGroupContactsModel, actionsContact: (EditGroupContactsModel, String) -> Unit
 
         ) {
-
-            binding.phoneContact.text = model.contact
+            //binding.phoneContact.text = model.contact
+// подстрока с 12-го  символа
+            binding.nameContact.text = model.contact.substring(12)
+// подстрока с 1-го по 11-й  символ
+            binding.phoneContact.text = model.contact.substring(0,11)
 
 
             binding.selectContact.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
@@ -66,6 +69,7 @@ class EditGroupContactsAdapter( private val contactsList:ArrayList<EditGroupCont
 
 
     }
+
 
 
 

@@ -110,17 +110,16 @@ class NewGroup : AppCompatActivity(),EasyPermissions.PermissionCallbacks,View.On
 
         if (model.condition==true){
 
-            listSelectedContacts.add(model.phone)
+            listSelectedContacts.add(model.phone+"/"+model.name)
 
 
         } else if (model.condition==false) {
 
-            val searchElement = listSelectedContacts.find { it.equals(model.phone) }
+            val searchElement = listSelectedContacts.find { it.substring(0,16).equals(model.phone) }!!
 
-            if (searchElement==model.phone){
-                listSelectedContacts.remove(model.phone)
+            if (searchElement.substring(0,16)==model.phone){
+                listSelectedContacts.remove(model.phone+"/"+model.name)
             }
-
 
         }
 
