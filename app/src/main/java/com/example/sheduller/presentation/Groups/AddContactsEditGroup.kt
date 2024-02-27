@@ -1,40 +1,65 @@
 package com.example.sheduller.presentation.Groups
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sheduller.R
+import com.example.sheduller.data.models.GroupModel
+import com.example.sheduller.databinding.ActivityAddContactsEditGroupBinding
 import com.example.sheduller.databinding.NewGroupBinding
+import com.example.sheduller.presentation.ScreenApp
 import com.vmadalin.easypermissions.EasyPermissions
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import pub.devrel.easypermissions.AppSettingsDialog
 
+class AddContactsEditGroup : AppCompatActivity(),EasyPermissions.PermissionCallbacks,View.OnClickListener {
 
-class NewGroup : AppCompatActivity(),EasyPermissions.PermissionCallbacks,View.OnClickListener {
-    private var binding:NewGroupBinding? = null
+
+    private var binding: ActivityAddContactsEditGroupBinding? = null
+
+
+    private  var id:String? = null
+    private  var name:String? = null
+    private  var admin:String? = null
+    private  var getContacts:String? = null
+    var converterGetContacts:Array<String>?=null
+
+
+
 
     var arrayList:ArrayList<ContactModel> = arrayListOf()
     var listSelectedContacts:MutableList<String> = mutableListOf()
     var adapter = ContactsAdapter(arrayList,{model:ContactModel -> checked(model)})
-
+    val groupsViewModel: GroupsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = NewGroupBinding.inflate(layoutInflater)
+        binding = ActivityAddContactsEditGroupBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        listSelectedContacts.clear()
+        name = intent.getStringExtra("name")
+        admin = intent.getStringExtra("admin")
+        getContacts = intent.getStringExtra("contacts")
+        id = intent.getStringExtra("id")
+
+        converterGetContacts = getContacts?.split(",")?.toTypedArray()
+
+
 
         conditionButtonAddContacts()
 
         if(checkContactPermissions()){
             binding.apply {
                 binding?.listContacts.apply {
-                    this!!.layoutManager = LinearLayoutManager(this@NewGroup)
+                    this!!.layoutManager = LinearLayoutManager(this@AddContactsEditGroup)
                     adapter = ContactsAdapter(arrayList,{model:ContactModel -> checked(model)})
 
                 }
@@ -43,12 +68,10 @@ class NewGroup : AppCompatActivity(),EasyPermissions.PermissionCallbacks,View.On
         }
 
         binding?.addContacts?.setOnClickListener (this)
-        binding?.back?.setOnClickListener (this)
-
+        binding?.backFromAddContactsEditGroup?.setOnClickListener (this)
     }
 
 
-    //интеграция адресной книги на мой экран
     @SuppressLint("Range")
     private fun getContactc() {
         arrayList.clear()
@@ -68,13 +91,21 @@ class NewGroup : AppCompatActivity(),EasyPermissions.PermissionCallbacks,View.On
             val contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
             val contactNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
             val contactModel =  ContactModel(idContact.toInt(), contactName, contactNumber, false)
-            arrayList.add(contactModel)
+            arrayList.add(contactModel) // это все контакты тел книги
         }
+//contacts.replace("[+ -]".toRegex(), "")
+        converterGetContacts?.map {
+            val predicat = it // все контакты имеющиеся в группе
+
+            // исключение контактов группы из  контактов тел книги, которые планируем добавить в группу
+            arrayList.removeIf{(it.phone.trim().replace("[+ -]".toRegex(), "") + "/" + it.name.trim()) == predicat.trim()}
+        }
+
         adapter.notifyDataSetChanged()
         cursor.close()
     }
 
-//шаблонные методы для взаимодействия с тлф книгой
+
     private fun checkContactPermissions():Boolean{
         if (PermissionTracking.hasCOntactPermissions(this)){
             return true
@@ -92,12 +123,10 @@ class NewGroup : AppCompatActivity(),EasyPermissions.PermissionCallbacks,View.On
         }
     }
 
-    //шаблонные методы для взаимодействия с тлф книгой
     override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
         TODO("Not yet implemented")
     }
 
-    //шаблонные методы для взаимодействия с тлф книгой
     override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
         if (EasyPermissions.somePermissionPermanentlyDenied(this,perms)){
             AppSettingsDialog.Builder(this).build().show()
@@ -138,14 +167,14 @@ class NewGroup : AppCompatActivity(),EasyPermissions.PermissionCallbacks,View.On
 
     override fun onClick(view: View) {
         when(view.id){
-            R.id.back -> {
+            R.id.back_from_add_contacts_edit_group -> {
 
-                val intent= Intent(this, AddGroup::class.java)
-                startActivity(intent)
+                onBackPressed() //кнопка возврата
 
             }
 
             R.id.add_contacts -> {
+
                 var listContacts:MutableList<String> = mutableListOf()
                 for (con in listSelectedContacts){
                     con.trim()
@@ -157,26 +186,20 @@ class NewGroup : AppCompatActivity(),EasyPermissions.PermissionCallbacks,View.On
 
                 val contacts:String=listContacts.joinToString()
                 listSelectedContacts.clear()
+                val convertorContacts = contacts
 
 
-                //.replace("[+ -]".toRegex(), "")
-                //Toast.makeText(this,convertorContacts,Toast.LENGTH_LONG).show()
+                val data = "$getContacts,$convertorContacts"
 
-                val intent=Intent(this, AddGroup::class.java)
-                intent.putExtra("contacts", contacts)
+
+
+                groupsViewModel.updateContactsGroupApi(id?.toInt()!!,data,this)
+                groupsViewModel.updateContactsGroup(GroupModel(id?.toInt()!!,name!!,admin!!,data))
+
+                val intent = Intent(this, ScreenApp::class.java)
                 startActivity(intent)
+
             }
         }
     }
-
-     fun converter(contacts: MutableList<String>){
-        for (contact in contacts){
-            contact
-
-        }
-
-
-    }
-
-
 }

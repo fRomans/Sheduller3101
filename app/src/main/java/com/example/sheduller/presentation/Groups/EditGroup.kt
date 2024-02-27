@@ -25,6 +25,7 @@ class EditGroup : AppCompatActivity() {
     private var getPreferences: SharedPreferences? = null
     private var user:String?=null
 
+
     val newContacts:MutableList<String> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,9 +41,10 @@ class EditGroup : AppCompatActivity() {
         }
 
         idGroup = intent.getStringExtra("idGroup")?.toInt()
+        name = intent.getStringExtra("name")
+        admin = intent.getStringExtra("admin")
 
-//        получаем id из предидущего активити при нажатии палочки
-        binding?.idGroup?.text = idGroup?.toString()
+        //binding?.idGroup?.text = idGroup?.toString() + " - " + name + " - " + admin
 
         getPreferences = this.getSharedPreferences(
             "User",
@@ -61,18 +63,39 @@ class EditGroup : AppCompatActivity() {
 
             val audit: MutableList<String> = arrayListOf()
 
-// списочный масси из Recyclereview в список с преобразованием в строку
+
             arrayListContacts.map {
                 audit.add(it.contact)
             }
-                // все контакты минус те, которые помечены на удаление
+
             val filtered = audit.minus(newContacts)
 
             groupsViewModel.updateContactsGroupApi(idGroup,filtered.joinToString(","),this)
 
             groupsViewModel.updateContactsGroup(GroupModel(idGroup!!,name!!,admin!!,filtered.joinToString(",")))
-            onBackPressed()//команда вернуться на предидущий экран(шаблонный метод)
+            onBackPressed()
         })
+
+        binding?.addContact?.setOnClickListener(View.OnClickListener {
+
+
+
+            val intent = Intent(this, AddContactsEditGroup::class.java)
+
+
+            intent.putExtra("name", name)
+            intent.putExtra("admin", admin)
+            intent.putExtra("id", idGroup.toString())
+
+            intent.putExtra("contacts",binding?.contacts?.text)
+
+
+            startActivity(intent)
+
+
+
+        })
+
 
     }
 
@@ -87,6 +110,8 @@ class EditGroup : AppCompatActivity() {
 
     private fun loadContacts(){
 
+
+
         groupsViewModel.loadContactsGroup(user!!, idGroup!!).observe(this, Observer {
 
 
@@ -95,13 +120,17 @@ class EditGroup : AppCompatActivity() {
 
 
             for(cursor in list) {
-                //println(cursor[0])
+
                 arrayListContacts.add(EditGroupContactsModel(cursor))
             }
+
+            binding?.contacts?.text = list.joinToString(",")
+
 
         })
 
     }
+
 
     private fun actionsContact(model:EditGroupContactsModel, tag:String) {
 

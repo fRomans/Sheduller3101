@@ -46,7 +46,7 @@ class EditGroupContactsAdapter( private val contactsList:ArrayList<EditGroupCont
         ) {
             //binding.phoneContact.text = model.contact
 // подстрока с 12-го  символа
-            binding.nameContact.text = model.contact.substring(12)
+            binding.nameContact.text = model.contact.trim().substring(12)
 // подстрока с 1-го по 11-й  символ
             binding.phoneContact.text = model.contact.substring(0,11)
 
