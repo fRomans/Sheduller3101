@@ -82,7 +82,7 @@ class NewGroup : AppCompatActivity(),EasyPermissions.PermissionCallbacks,View.On
             //if( contactModel.contains(user!!, ignoreCase = true))
             arrayList.add(contactModel)
         }
-
+//   исключаем из контактов админа группы при создании группы
         arrayList.removeIf { (it.phone.replace("[+ -]".toRegex(), "") + "/" + it.name).contains(user!!, ignoreCase = true)}
 
         adapter.notifyDataSetChanged()
