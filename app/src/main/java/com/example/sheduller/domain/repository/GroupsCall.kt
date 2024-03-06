@@ -12,4 +12,6 @@ interface GroupsCall {
     suspend fun startMigration(user:String, context: Context)
     fun updateContactsGroupApi(id:Int?, usersGroup:String?, context: Context)
     fun updateContactsGroup(model: GroupModel)
+    suspend fun deleteGroup(model: GroupModel)
+    fun deleteGroupApi(id:Int, context: Context)
 }

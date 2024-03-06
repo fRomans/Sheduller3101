@@ -42,6 +42,14 @@
             app:layout_constraintTop_toBottomOf="@id/name_group" />
 
         <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/delete_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/edit_group"
+                android:src="@drawable/delete_red"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/edit_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

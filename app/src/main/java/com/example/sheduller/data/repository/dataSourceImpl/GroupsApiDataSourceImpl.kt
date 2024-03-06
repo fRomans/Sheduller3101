@@ -92,4 +92,35 @@ class GroupsApiDataSourceImpl(private val dataSource: GroupsDataSource):GroupsAp
         })
 
     }
+
+
+    override fun deleteGroup(id:Int, context:Context) {
+
+        val call: Call<ResponseBody?>? = ApiClient.instance?.api?.deleteGroup(id)
+
+        call?.enqueue(object : Callback<ResponseBody?> {
+            override fun onResponse(call: Call<ResponseBody?>, response: Response<ResponseBody?>) {
+                Toast.makeText(
+                    context,
+                    "ГРУППА УДАЛЕНА",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+
+            }
+
+
+
+            override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
+                Toast.makeText(
+                    context,
+                    "ОШИБКА! ВКЛЮЧИТЕ ИНТЕРНЕТ!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+
+        })
+
+    }
 }

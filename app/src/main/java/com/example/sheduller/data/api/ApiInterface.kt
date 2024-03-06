@@ -45,6 +45,12 @@ interface ApiInterface {
         @Field("users_group") usersGroup: String?
     ): Call<ResponseBody?>?
 
+    @FormUrlEncoded
+    @POST("deleteGroup.php")
+    fun deleteGroup(
+        @Field("id") id: Int?,
+    ): Call<ResponseBody?>?
+
     @GET("loadGroups.php")
     fun loadGroups(@Query("user") user: String):
             Call<ArrayList<GroupApiModel>>

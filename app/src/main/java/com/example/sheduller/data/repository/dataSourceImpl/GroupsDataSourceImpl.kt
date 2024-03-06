@@ -37,7 +37,9 @@ class GroupsDataSourceImpl (private val dao: GroupsDao):
         return dao.loadContactsGroup(admin, idGroup)
     }
 
-
+    override suspend fun deleteGroup(model: GroupModel) {
+        dao.deleteGroup(model)
+    }
 
     override suspend fun clear() {
         CoroutineScope(Dispatchers.IO).launch {

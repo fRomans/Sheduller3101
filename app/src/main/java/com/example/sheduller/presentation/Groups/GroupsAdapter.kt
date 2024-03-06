@@ -15,8 +15,9 @@ import com.example.sheduller.databinding.GroupItemBinding
 import com.google.android.material.card.MaterialCardView
 
 class GroupsAdapter( private var infoGroup: (GroupModel) -> Unit,
-                     private var styleGroupAdmin: (MaterialCardView, TextView, ImageButton, ImageButton, GroupModel) -> Unit,
-                     private var addEvent: (GroupModel) -> Unit, private var editGroup: (GroupModel) -> Unit
+                     private var styleGroupAdmin: (MaterialCardView, TextView, ImageButton, ImageButton,ImageButton, GroupModel) -> Unit,
+                     private var addEvent: (GroupModel) -> Unit, private var editGroup: (GroupModel) -> Unit,
+                     private var deleteGroup: (GroupModel) -> Unit
 ) : RecyclerView.Adapter<GroupsAdapter.GroupsHolder>() {
 
     private val groupsList = ArrayList<GroupModel>()
@@ -34,7 +35,7 @@ class GroupsAdapter( private var infoGroup: (GroupModel) -> Unit,
     }
 
     override fun onBindViewHolder(holder: GroupsHolder, position: Int) {
-        holder.bind(groupsList[position], infoGroup, styleGroupAdmin, addEvent, editGroup)
+        holder.bind(groupsList[position], infoGroup, styleGroupAdmin, addEvent, editGroup, deleteGroup)
 
     }
 
@@ -51,8 +52,8 @@ class GroupsAdapter( private var infoGroup: (GroupModel) -> Unit,
 
         fun bind(
             model: GroupModel, infoGroup: (GroupModel) -> Unit,
-            styleGroupAdmin: (MaterialCardView, TextView, ImageButton, ImageButton, GroupModel) -> Unit,
-            addEvent: (GroupModel) -> Unit, editGroup: (GroupModel) -> Unit
+            styleGroupAdmin: (MaterialCardView, TextView, ImageButton, ImageButton,ImageButton, GroupModel) -> Unit,
+            addEvent: (GroupModel) -> Unit, editGroup: (GroupModel) -> Unit, deleteGroup: (GroupModel) -> Unit
 
         ) {
 
@@ -63,7 +64,7 @@ class GroupsAdapter( private var infoGroup: (GroupModel) -> Unit,
                 infoGroup(model)
             })
 
-            styleGroupAdmin(binding.cardGroup, binding.roleGroup, binding.addEvent, binding.editGroup, model)
+            styleGroupAdmin(binding.cardGroup, binding.roleGroup, binding.addEvent, binding.editGroup, binding.deleteGroup, model)
 
             binding.addEvent.setOnClickListener(View.OnClickListener {
                 addEvent(model)
@@ -71,6 +72,10 @@ class GroupsAdapter( private var infoGroup: (GroupModel) -> Unit,
 
             binding.editGroup.setOnClickListener(View.OnClickListener {
                 editGroup(model)
+            })
+
+            binding.deleteGroup.setOnClickListener(View.OnClickListener {
+                deleteGroup(model)
             })
 
 

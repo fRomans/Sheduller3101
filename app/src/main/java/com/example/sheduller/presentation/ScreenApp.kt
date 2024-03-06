@@ -174,9 +174,9 @@ class ScreenApp : AppCompatActivity(),LoadContent {
     private fun initRecyclerGroups(){
         binding?.groups?.layoutManager = LinearLayoutManager(this)
         groupsAdapter = GroupsAdapter({model:GroupModel -> infoGroup(model)},
-            {card:MaterialCardView, message:TextView, butAddEvent:ImageButton, butEditGroup:ImageButton,
-             model:GroupModel -> styleGroupAdmin(card,message, butAddEvent, butEditGroup, model)},
-            {model:GroupModel -> addEvent(model)},  {model:GroupModel -> editGroup(model)})
+            {card:MaterialCardView, message:TextView, butAddEvent:ImageButton, butEditGroup:ImageButton,butDeleteGroup:ImageButton,
+             model:GroupModel -> styleGroupAdmin(card,message, butAddEvent, butEditGroup, butDeleteGroup, model)},
+            {model:GroupModel -> addEvent(model)},  {model:GroupModel -> editGroup(model)}, {model:GroupModel -> deleteGroup(model)} )
         binding?.groups?.adapter = groupsAdapter
     }
 
@@ -215,6 +215,7 @@ class ScreenApp : AppCompatActivity(),LoadContent {
         message: TextView,
         buttonAddEvent: ImageButton,
         buttonEditGroup: ImageButton,
+        buttonDeleteGroup: ImageButton,
         model: GroupModel
     ) {
         if (model.admin == user){
@@ -222,6 +223,7 @@ class ScreenApp : AppCompatActivity(),LoadContent {
             message.visibility = View.VISIBLE
             buttonAddEvent.visibility = View.VISIBLE
             buttonEditGroup.visibility = View.VISIBLE
+            buttonDeleteGroup.visibility = View.VISIBLE
 
 
         } else {
@@ -249,6 +251,13 @@ class ScreenApp : AppCompatActivity(),LoadContent {
             putExtra("admin", model.admin)
         }
         startActivity(intent)
+
+    }
+
+    private fun deleteGroup(model:GroupModel){
+
+        groupsViewModel.deleteGroup(model)
+        groupsViewModel.deleteGroupApi(model.id, this)
 
     }
 

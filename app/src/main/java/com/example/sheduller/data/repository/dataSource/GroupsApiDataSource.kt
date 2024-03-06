@@ -7,4 +7,5 @@ interface GroupsApiDataSource {
     fun createGroup(name: String?, admin:String?, usersAdmin:String?, context: Context)
     fun startMigration (user:String, context: Context)
     fun updateContactsGroupApi(id:Int?, usersGroup:String?, context: Context)
+    fun deleteGroup(id:Int, context:Context)
 }

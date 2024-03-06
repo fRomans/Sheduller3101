@@ -28,6 +28,18 @@ class GroupsUseCase(private val call: GroupsCall) {
 
     }
 
+    suspend fun deleteGroup (model: GroupModel) {
+
+        call.deleteGroup(model)
+
+    }
+
+    fun deleteGroupApi(id:Int, context: Context) {
+
+        call.deleteGroupApi(id, context)
+
+    }
+
     fun loadGroups(): LiveData<List<GroupModel>> {
 
         return call.loadGroups()

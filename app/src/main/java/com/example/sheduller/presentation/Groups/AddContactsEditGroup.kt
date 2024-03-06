@@ -99,6 +99,7 @@ class AddContactsEditGroup : AppCompatActivity(),EasyPermissions.PermissionCallb
 
             // исключение контактов группы из  контактов тел книги, которые планируем добавить в группу
             arrayList.removeIf{(it.phone.trim().replace("[+ -]".toRegex(), "") + "/" + it.name.trim()) == predicat.trim()}
+            arrayList.removeIf { (it.phone.replace("[+ -]".toRegex(), "") + "/" + it.name).contains(admin!!, ignoreCase = true)}
         }
 
         adapter.notifyDataSetChanged()

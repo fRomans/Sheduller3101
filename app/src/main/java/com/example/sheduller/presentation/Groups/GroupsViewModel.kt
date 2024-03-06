@@ -34,6 +34,19 @@ class GroupsViewModel(private val useCase: GroupsUseCase):
         return useCase.loadSearchGroups(name)
     }
 
+    fun deleteGroup(model: GroupModel) = viewModelScope.launch{
+
+        useCase.deleteGroup(model)
+    }
+
+//    fun deleteGroup(model: GroupModel) {
+//        useCase.deleteGroup(model)
+//    }
+
+    fun deleteGroupApi(id:Int, context:Context) {
+        useCase.deleteGroupApi(id, context)
+    }
+
     fun loadContactsGroup(admin:String, idGroup:Int):
             LiveData<List<String>> {
         return useCase.loadContactsGroup(admin, idGroup)

@@ -24,9 +24,17 @@ class GroupsRepository (private val apiDataSource: GroupsApiDataSource,
         apiDataSource.updateContactsGroupApi(id, usersGroup, context)
     }
 
+    override fun deleteGroupApi(id:Int, context: Context) {
+        apiDataSource.deleteGroup(id, context)
+    }
+
 
     override fun updateContactsGroup(model: GroupModel) {
         dataSource.updateContactsGroup(model)
+    }
+
+    override suspend fun deleteGroup(model: GroupModel) {
+        dataSource.deleteGroup(model)
     }
 
     override fun loadGroups(): LiveData<List<GroupModel>> {

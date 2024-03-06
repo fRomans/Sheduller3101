@@ -1,7 +1,9 @@
 package com.example.sheduller.presentation.Groups
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -20,12 +22,21 @@ class NewGroup : AppCompatActivity(),EasyPermissions.PermissionCallbacks,View.On
     var arrayList:ArrayList<ContactModel> = arrayListOf()
     var listSelectedContacts:MutableList<String> = mutableListOf()
     var adapter = ContactsAdapter(arrayList,{model:ContactModel -> checked(model)})
-
+    private var user:String?=null
+    private var getPreferences: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = NewGroupBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+        getPreferences = this.getSharedPreferences(
+            "User",
+            Context.MODE_PRIVATE
+        )
+
+        user = getPreferences?.getString("key", "User")
+
 
         listSelectedContacts.clear()
 
@@ -68,8 +79,12 @@ class NewGroup : AppCompatActivity(),EasyPermissions.PermissionCallbacks,View.On
             val contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
             val contactNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
             val contactModel =  ContactModel(idContact.toInt(), contactName, contactNumber, false)
+            //if( contactModel.contains(user!!, ignoreCase = true))
             arrayList.add(contactModel)
         }
+
+        arrayList.removeIf { (it.phone.replace("[+ -]".toRegex(), "") + "/" + it.name).contains(user!!, ignoreCase = true)}
+
         adapter.notifyDataSetChanged()
         cursor.close()
     }

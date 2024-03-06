@@ -2,6 +2,7 @@ package com.example.sheduller.data.localDB
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
@@ -25,6 +26,9 @@ interface GroupsDao {
 
     @Update
     suspend fun updateContactsGroup(model: GroupModel)
+
+    @Delete
+    suspend fun deleteGroup(model: GroupModel)
 
 
 //    @Query("SELECT * FROM groups_data_table  WHERE groups_admin = :admin" )
