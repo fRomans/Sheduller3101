@@ -17,10 +17,10 @@ class EventsApiDataSourceImpl (private val dataSource: EventsDataSource):
 
     override fun createEvent(day: Int?,month: Int?,year: Int?,timeStart: String?,timeEnd: String?,
                              description: String?,
-                             groupId: Int?, context: Context){
+                             groupId: Int?, dayNot: Int?, monthNot: Int?, yearNot: Int?, context: Context){
 
         val call: Call<ResponseBody?>? = ApiClient.instance?.api?.createEvent(day, month, year, timeStart,
-        timeEnd, description, groupId)
+        timeEnd, description, groupId, dayNot, monthNot, yearNot )
         call?.enqueue(object : Callback<ResponseBody?> {
             override fun onResponse(call: Call<ResponseBody?>, response: Response<ResponseBody?>) {
                 Toast.makeText(context, "Группа Создана", Toast.LENGTH_SHORT).show()
@@ -64,7 +64,11 @@ class EventsApiDataSourceImpl (private val dataSource: EventsDataSource):
                             audit.timeStart.toString(),
                             audit.timeEnd.toString(),
                             audit.description.toString(),
-                            audit.groupId!!
+                            audit.groupId!!,
+                            audit.dayNot!!,
+                            audit.monthNot!!,
+                            audit.yearNot!!
+
                         )
                     }?.let {
                         dataSource.insert(

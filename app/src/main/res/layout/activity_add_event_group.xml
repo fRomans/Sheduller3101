@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.Groups.AddEventGroup">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/header_screen"
@@ -151,6 +156,15 @@
             android:textColor="@android:color/black"
             app:backgroundTint="@android:color/holo_orange_dark"/>
 
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enter_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="4"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                app:backgroundTint="@android:color/holo_orange_dark" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -210,14 +224,107 @@
         app:helperTextTextColor="@android:color/holo_orange_dark"
         app:suffixText="@string/header_event_group_description">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/enter_description"
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/section_enter_day_not"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="4"
-            android:inputType="text"
-            android:textColor="@android:color/black"
-            app:backgroundTint="@android:color/holo_orange_dark"/>
+            app:layout_constraintTop_toBottomOf="@id/section_enter_description"
+            android:layout_margin="20dp"
+            app:boxBackgroundColor="@android:color/holo_blue_dark"
+            app:startIconTint="@android:color/black"
+            app:endIconTint="@android:color/holo_red_light"
+            app:boxStrokeColor="@android:color/holo_green_light"
+            android:hint="@string/header_event_group_day"
+            app:hintTextColor="@android:color/holo_blue_light"
+            app:startIconDrawable="@drawable/keyboard"
+            app:startIconContentDescription="@string/header_event_group_day"
+            app:endIconMode="clear_text"
+            app:endIconDrawable="@drawable/exit"
+            app:endIconContentDescription="@string/header_event_group_day"
+            app:boxStrokeWidthFocused="4dp"
+            app:helperTextEnabled="true"
+            app:helperText="@string/header_event_group_day"
+            app:helperTextTextColor="@android:color/holo_orange_dark"
+            app:suffixText="@string/header_event_group_day">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enter_day_not"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="4"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                app:backgroundTint="@android:color/holo_orange_dark"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/section_enter_month_not"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/section_enter_day_not"
+            android:layout_margin="20dp"
+            app:boxBackgroundColor="@android:color/holo_blue_dark"
+            app:startIconTint="@android:color/black"
+            app:endIconTint="@android:color/holo_red_light"
+            app:boxStrokeColor="@android:color/holo_green_light"
+            android:hint="@string/header_event_group_month"
+            app:hintTextColor="@android:color/holo_blue_light"
+            app:startIconDrawable="@drawable/keyboard"
+            app:startIconContentDescription="@string/header_event_group_month"
+            app:endIconMode="clear_text"
+            app:endIconDrawable="@drawable/exit"
+            app:endIconContentDescription="@string/header_event_group_month"
+            app:boxStrokeWidthFocused="4dp"
+            app:helperTextEnabled="true"
+            app:helperText="@string/header_event_group_month"
+            app:helperTextTextColor="@android:color/holo_orange_dark"
+            app:suffixText="@string/header_event_group_month">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enter_month_not"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="4"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                app:backgroundTint="@android:color/holo_orange_dark"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/section_enter_year_not"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/section_enter_month_not"
+            android:layout_margin="20dp"
+            app:boxBackgroundColor="@android:color/holo_blue_dark"
+            app:startIconTint="@android:color/black"
+            app:endIconTint="@android:color/holo_red_light"
+            app:boxStrokeColor="@android:color/holo_green_light"
+            android:hint="@string/header_event_group_year"
+            app:hintTextColor="@android:color/holo_blue_light"
+            app:startIconDrawable="@drawable/keyboard"
+            app:startIconContentDescription="Год"
+            app:endIconMode="clear_text"
+            app:endIconDrawable="@drawable/exit"
+            app:endIconContentDescription="@string/header_event_group_year"
+            app:boxStrokeWidthFocused="4dp"
+            app:helperTextEnabled="true"
+            app:helperText="@string/header_event_group_year"
+            app:helperTextTextColor="@android:color/holo_orange_dark"
+            app:suffixText="@string/header_event_group_year">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enter_year_not"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="4"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                app:backgroundTint="@android:color/holo_orange_dark"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -228,7 +335,7 @@
         android:layout_margin="10dp"
         android:textAlignment="center"
         android:textColor="@color/red"
-        app:layout_constraintTop_toBottomOf="@id/section_enter_description"/>
+        app:layout_constraintTop_toBottomOf="@id/section_enter_year_not"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/create_event"
@@ -242,4 +349,5 @@
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

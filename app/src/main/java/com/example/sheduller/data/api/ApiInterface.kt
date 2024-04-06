@@ -64,7 +64,10 @@ interface ApiInterface {
         @Field("time_start") timeStart: String?,
         @Field("time_end") timeEnd: String?,
         @Field("description") description: String?,
-        @Field("group_id") groupId: Int?
+        @Field("group_id") groupId: Int?,
+        @Field("day_not") dayNot: Int?,
+        @Field("month_not") monthNot: Int?,
+        @Field("year_not") yearNot: Int?
     ): Call<ResponseBody?>?
 
 }

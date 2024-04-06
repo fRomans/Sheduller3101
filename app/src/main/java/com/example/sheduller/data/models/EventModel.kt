@@ -31,6 +31,15 @@ data class EventModel(
     var description: String,
 
     @ColumnInfo(name = "events_group_id")
-    var groupId: Int
+    var groupId: Int,
+
+    @ColumnInfo(name = "events_day_not")
+    var dayNot: Int,
+
+    @ColumnInfo(name = "events_month_not")
+    var monthNot: Int,
+
+    @ColumnInfo(name = "events_year_not")
+    var yearNot: Int
 
 )

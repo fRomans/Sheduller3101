@@ -21,5 +21,11 @@ class EventApiModel (
     @SerializedName("description") @Expose
     var description: String? = null,
     @SerializedName("group_id") @Expose
-    var groupId: Int? = null
+    var groupId: Int? = null,
+    @SerializedName("day_not") @Expose
+    var dayNot: Int? = null,
+    @SerializedName("month_not") @Expose
+    var monthNot: Int? = null,
+    @SerializedName("year_not") @Expose
+    var yearNot: Int? = null
 )

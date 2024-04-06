@@ -11,10 +11,10 @@ class EventsUseCase(private val call: EventsCall) {
     fun createEvent(
         day: Int?, month: Int?, year: Int?, timeStart: String?, timeEnd: String?,
         description: String?,
-        groupId: Int?, context: Context
+        groupId: Int?, dayNot: Int?, monthNot: Int?, yearNot: Int?, context: Context
     ){
         call.createEvent(day, month, year, timeStart, timeEnd,
-            description, groupId, context)
+            description, groupId, dayNot, monthNot, yearNot, context)
     }
 
 

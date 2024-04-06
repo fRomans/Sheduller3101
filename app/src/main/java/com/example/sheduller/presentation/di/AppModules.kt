@@ -3,7 +3,7 @@ package com.example.sheduller.presentation.di
 import androidx.room.Room
 import com.example.sheduller.presentation.authentication.AuthenticationViewModel
 import com.example.sheduller.data.api.ApiInterface
-import com.example.sheduller.data.localDB.DbTsThree
+import com.example.sheduller.data.localDB.DbTsFwo
 import com.example.sheduller.data.repository.dataSource.AuthenticationApiDataSource
 import com.example.sheduller.data.repository.dataSource.EventsApiDataSource
 import com.example.sheduller.data.repository.dataSource.EventsDataSource
@@ -33,8 +33,8 @@ val moduleDB = module {
 
     single {
         Room.databaseBuilder(
-            androidContext(), DbTsThree::class.java,
-            "localDBTSThree"
+            androidContext(), DbTsFwo::class.java,
+            "localDBTSFwo"
         ).build()
     }
 
@@ -44,7 +44,7 @@ val moduleEvents = module{
 
     moduleDB
 
-    single { get<DbTsThree>().eventsDao }
+    single { get<DbTsFwo>().eventsDao }
 
 
 
@@ -116,7 +116,7 @@ val moduleGroups = module{
 
     moduleDB
 
-    single { get<DbTsThree>().groupsDao }
+    single { get<DbTsFwo>().groupsDao }
 
 
 
