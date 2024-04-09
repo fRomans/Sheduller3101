@@ -79,14 +79,21 @@
         app:helperTextTextColor="@android:color/holo_orange_dark"
         app:suffixText="@string/header_event_group_month">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/enter_month"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLength="4"
-            android:inputType="text"
-            android:textColor="@android:color/black"
-            app:backgroundTint="@android:color/holo_orange_dark"/>
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/enter_month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textColor="@android:color/white"/>
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/enter_month"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:maxLength="4"-->
+<!--                android:inputType="text"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                app:backgroundTint="@android:color/holo_orange_dark" />-->
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -156,14 +163,7 @@
             android:textColor="@android:color/black"
             app:backgroundTint="@android:color/holo_orange_dark"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/enter_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLength="4"
-                android:inputType="text"
-                android:textColor="@android:color/black"
-                app:backgroundTint="@android:color/holo_orange_dark" />
+
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -224,6 +224,15 @@
         app:helperTextTextColor="@android:color/holo_orange_dark"
         app:suffixText="@string/header_event_group_description">
 
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enter_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="4"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                app:backgroundTint="@android:color/holo_orange_dark" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -283,14 +292,22 @@
             app:helperTextTextColor="@android:color/holo_orange_dark"
             app:suffixText="@string/header_event_group_month">
 
-        <com.google.android.material.textfield.TextInputEditText
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/enter_month_not"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="4"
-                android:inputType="text"
-                android:textColor="@android:color/black"
-                app:backgroundTint="@android:color/holo_orange_dark"/>
+                android:inputType="none"
+                android:textColor="@android:color/white"/>
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/enter_month_not"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:maxLength="4"-->
+<!--                android:inputType="text"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                app:backgroundTint="@android:color/holo_orange_dark"/>-->
 
     </com.google.android.material.textfield.TextInputLayout>
 

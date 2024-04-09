@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModel
 import com.example.sheduller.R
 import com.example.sheduller.databinding.ActivityAddEventGroupBinding
@@ -24,6 +25,14 @@ class AddEventGroup : AppCompatActivity() {
         setContentView(binding?.root)
 
         idGroup = intent.getStringExtra("groupId")?.toInt()
+
+        val listMonths = listOf("Январь", "Февраль", "Март", "Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь",
+            "Ноябрь","Декабрь")
+
+        val adapter = ArrayAdapter(this, R.layout.list_item, listMonths)
+
+        binding?.enterMonth?.setAdapter(adapter)
+        binding?.enterMonthNot?.setAdapter(adapter)
 
         binding?.createEvent?.setOnClickListener(View.OnClickListener {
 
