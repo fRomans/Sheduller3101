@@ -57,4 +57,9 @@ class GroupsViewModel(private val useCase: GroupsUseCase):
         useCase.startMigration(user, context)
 
     }
+
+    fun loadInfoNot(user:String, context: Context) = viewModelScope.launch {
+        useCase.loadInfoNot(user, context)
+
+    }
 }

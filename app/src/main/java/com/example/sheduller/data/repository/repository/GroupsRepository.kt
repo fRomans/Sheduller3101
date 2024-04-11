@@ -54,4 +54,9 @@ class GroupsRepository (private val apiDataSource: GroupsApiDataSource,
         dataSource.clear()
         apiDataSource.startMigration(user, context)
     }
+
+    override suspend fun loadInfoNot(user:String, context: Context) {
+
+        apiDataSource.loadInfoNot(user, context)
+    }
 }

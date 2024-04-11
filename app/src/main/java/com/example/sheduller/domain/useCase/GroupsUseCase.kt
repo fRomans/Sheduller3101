@@ -64,4 +64,9 @@ class GroupsUseCase(private val call: GroupsCall) {
         call.startMigration(user, context)
 
     }
+
+    suspend fun loadInfoNot(user:String, context: Context) {
+
+        call.loadInfoNot(user, context)
+    }
 }

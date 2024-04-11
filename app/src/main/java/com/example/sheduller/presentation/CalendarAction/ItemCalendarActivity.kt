@@ -23,9 +23,19 @@ class ItemCalendarActivity : AppCompatActivity() {
     private var monthAdapter: MonthAdapter? = null
     private var monthes: ArrayList<MonthModel>? = null
 
-    private var daysOctober23: ArrayList<DayModel>? = null
-    private var daysNovember23: ArrayList<DayModel>? = null
-    private var daysDecember23: ArrayList<DayModel>? = null
+
+    private var daysJanuaru24: ArrayList<DayModel>? = null
+    private var daysFebruary24: ArrayList<DayModel>? = null
+    private var daysMarch24: ArrayList<DayModel>? = null
+    private var daysApril24: ArrayList<DayModel>? = null
+    private var daysMay24: ArrayList<DayModel>? = null
+    private var daysJune24: ArrayList<DayModel>? = null
+    private var daysJuly24: ArrayList<DayModel>? = null
+    private var daysAugust24: ArrayList<DayModel>? = null
+    private var daysSeptember24: ArrayList<DayModel>? = null
+    private var daysOctober24: ArrayList<DayModel>? = null
+    private var daysNovember24: ArrayList<DayModel>? = null
+    private var daysDecember24: ArrayList<DayModel>? = null
 
     val eventsViewModel: EventsViewModel by viewModel()
 
@@ -51,35 +61,122 @@ class ItemCalendarActivity : AppCompatActivity() {
         monthes = ArrayList<MonthModel>()
 
 
-        daysOctober23 = ArrayList<DayModel>()
-        daysNovember23 = ArrayList<DayModel>()
-        daysDecember23 = ArrayList<DayModel>()
+        daysJanuaru24 = ArrayList<DayModel>()
+        daysFebruary24 = ArrayList<DayModel>()
+        daysMarch24 = ArrayList<DayModel>()
+        daysApril24 = ArrayList<DayModel>()
+        daysMay24 = ArrayList<DayModel>()
+        daysJune24 = ArrayList<DayModel>()
+        daysJuly24 = ArrayList<DayModel>()
+        daysAugust24 = ArrayList<DayModel>()
+        daysSeptember24 = ArrayList<DayModel>()
+        daysOctober24 = ArrayList<DayModel>()
+        daysNovember24 = ArrayList<DayModel>()
+        daysDecember24 = ArrayList<DayModel>()
 
-        monthes?.add(MonthModel("Октябрь", "2023", daysOctober23!!))
-        monthes?.add(MonthModel("Ноябрь", "2023", daysNovember23!!))
-        monthes?.add(MonthModel("Декабрь", "2023", daysDecember23!!))
+        monthes?.add(MonthModel("Январь", "2024", daysJanuaru24!!))
+        monthes?.add(MonthModel("Февраль", "2024", daysFebruary24!!))
+        monthes?.add(MonthModel("Март", "2024", daysMarch24!!))
+        monthes?.add(MonthModel("Апрель", "2024", daysApril24!!))
+        monthes?.add(MonthModel("Май", "2024", daysMay24!!))
+        monthes?.add(MonthModel("Июнь", "2024", daysJune24!!))
+        monthes?.add(MonthModel("Июль", "2024", daysJuly24!!))
+        monthes?.add(MonthModel("Август", "2024", daysAugust24!!))
+        monthes?.add(MonthModel("Сентябрь", "2024", daysSeptember24!!))
+        monthes?.add(MonthModel("Октябрь", "2024", daysOctober24!!))
+        monthes?.add(MonthModel("Ноябрь", "2024", daysNovember24!!))
+        monthes?.add(MonthModel("Декабрь", "2024", daysDecember24!!))
 
-        for (item in 1..6) {
-            daysOctober23?.add(DayModel("0",10,2023))
-        }
+//        for (item in 1..6) {
+//            daysJanuaru24?.add(DayModel("0",1,2024))
+//        }
         for (item in 1..31) {
-            daysOctober23?.add(DayModel(item.toString(),10,2023))
+            daysJanuaru24?.add(DayModel(item.toString(),10,2023))
         }
 
-        for (item in 1..2) {
-            daysNovember23?.add(DayModel("0",11,2023))
+        for (item in 1..3) {
+            daysFebruary24?.add(DayModel("0",11,2023))
         }
 
-        for (item in 1..30) {
-            daysNovember23?.add(DayModel(item.toString(), 11,2023))
+        for (item in 1..29) {
+            daysFebruary24?.add(DayModel(item.toString(), 11,2023))
         }
 
         for (item in 1..4) {
-            daysDecember23?.add(DayModel("0",12,2023))
+            daysMarch24?.add(DayModel("0",12,2023))
         }
 
         for (item in 1..31) {
-            daysDecember23?.add(DayModel(item.toString(), 12,2023))
+            daysMarch24?.add(DayModel(item.toString(), 12,2023))
+        }
+
+//        for (item in 1..6) {
+//            daysApril24?.add(DayModel("0",10,2023))
+//        }
+        for (item in 1..30) {
+            daysApril24?.add(DayModel(item.toString(),10,2023))
+        }
+
+        for (item in 1..2) {
+            daysMay24?.add(DayModel("0",11,2023))
+        }
+
+        for (item in 1..31) {
+            daysMay24?.add(DayModel(item.toString(), 11,2023))
+        }
+
+        for (item in 1..5) {
+            daysJune24?.add(DayModel("0",12,2023))
+        }
+
+        for (item in 1..30) {
+            daysJune24?.add(DayModel(item.toString(), 12,2023))
+        }
+
+//        for (item in 1..6) {
+//            daysJuly24?.add(DayModel("0",10,2023))
+//        }
+        for (item in 1..31) {
+            daysJuly24?.add(DayModel(item.toString(),10,2023))
+        }
+
+        for (item in 1..3) {
+            daysAugust24?.add(DayModel("0",11,2023))
+        }
+
+        for (item in 1..31) {
+            daysAugust24?.add(DayModel(item.toString(), 11,2023))
+        }
+
+        for (item in 1..6) {
+            daysSeptember24?.add(DayModel("0",12,2023))
+        }
+
+        for (item in 1..30) {
+            daysSeptember24?.add(DayModel(item.toString(), 12,2023))
+        }
+
+        for (item in 1..1) {
+            daysOctober24?.add(DayModel("0",10,2023))
+        }
+        for (item in 1..31) {
+            daysOctober24?.add(DayModel(item.toString(),10,2023))
+        }
+
+        for (item in 1..4) {
+            daysNovember24?.add(DayModel("0",11,2023))
+        }
+
+        for (item in 1..30) {
+            daysNovember24?.add(DayModel(item.toString(), 11,2023))
+        }
+
+        for (item in 1..6) {
+            daysDecember24?.add(DayModel("0",12,2023))
+        }
+
+        for (item in 1..31) {
+            daysDecember24?.add(DayModel(item.toString(), 12,2023))
         }
 //____________________________________________________________________________________
         binding?.recyclerMonth?.layoutManager = LinearLayoutManager(this)

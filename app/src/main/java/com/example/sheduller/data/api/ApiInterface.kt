@@ -55,6 +55,13 @@ interface ApiInterface {
     fun loadGroups(@Query("user") user: String):
             Call<ArrayList<GroupApiModel>>
 
+    @GET("loadGroupsNot.php")
+    fun loadGroupsNot(@Query("user") user: String):
+            Call<ArrayList<GroupApiModel>>
+    @GET("loadEventsNot.php")
+    fun loadEventsNot(@Query("day_not") day: String,@Query("month_not") month: String,@Query("year_not") year: String,@Query("group_id") groupId: String):
+            Call<ArrayList<EventApiModel>>
+
     @FormUrlEncoded
     @POST("createEvent.php")
     fun createEvent(

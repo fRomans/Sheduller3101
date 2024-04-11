@@ -14,4 +14,5 @@ interface GroupsCall {
     fun updateContactsGroup(model: GroupModel)
     suspend fun deleteGroup(model: GroupModel)
     fun deleteGroupApi(id:Int, context: Context)
+    suspend fun loadInfoNot(user:String, context: Context)
 }

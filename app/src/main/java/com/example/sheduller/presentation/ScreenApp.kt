@@ -71,6 +71,8 @@ class ScreenApp : AppCompatActivity(),LoadContent {
         eventsViewModel.migration(this)
         groupsViewModel.migration(user ?: return, this)
 
+        loadInfoNot()
+
         //binding?.fab?.hide()
         //binding?.fab?.setOnClickListener(this)// floatActionButton
 
@@ -357,6 +359,10 @@ class ScreenApp : AppCompatActivity(),LoadContent {
             }
         })
 
+    }
+
+    fun loadInfoNot(){
+        groupsViewModel.loadInfoNot(user!!, this)
     }
 
 

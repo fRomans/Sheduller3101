@@ -14,6 +14,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Calendar
 
 class GroupsApiDataSourceImpl(private val dataSource: GroupsDataSource):GroupsApiDataSource {
 
@@ -42,6 +43,101 @@ class GroupsApiDataSourceImpl(private val dataSource: GroupsDataSource):GroupsAp
                 Toast.makeText(context, "ВКЛЮЧИТЕ ИНТЕРНЕТ", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    override fun loadInfoNot (user:String, context: Context) {
+
+        val calendar: Calendar = Calendar.getInstance()
+        val day: Int = calendar.get(Calendar.DAY_OF_MONTH)
+        var month: Int = calendar.get(Calendar.MONTH)
+        month++
+        val year:Int = calendar.get(Calendar.YEAR)
+
+        val call = ApiClient.instance?.api?.loadGroupsNot(user)
+
+
+
+        call?.enqueue(object: Callback<ArrayList<GroupApiModel>> {
+            override fun onResponse(
+                call: Call<ArrayList<GroupApiModel>>,
+                response: Response<ArrayList<GroupApiModel>>
+            ) {
+
+
+                var loadGroups: ArrayList<GroupApiModel>? = null
+
+                loadGroups?.clear()
+
+                loadGroups = (response.body() as ArrayList<GroupApiModel>?)!!
+
+                loadGroups?.map {
+
+
+                    loadEventsNot(day.toString(), month.toString(), year.toString(), it.id.toString(), context)
+
+
+                }
+
+
+
+
+            }
+
+            override fun onFailure(call: Call<ArrayList<GroupApiModel>>, t: Throwable) {
+                Toast.makeText(context, "ОШИБКА! ВКЛЮЧИТЕ ИНТЕРНЕТ!", Toast.LENGTH_SHORT).show()
+
+            }
+        })
+
+    }
+
+    fun loadEventsNot (day:String, month:String, year:String, idGroup:String, context: Context) {
+
+        val call = ApiClient.instance?.api?.loadEventsNot(day, month, year, idGroup)
+
+
+
+        call?.enqueue(object: Callback<ArrayList<EventApiModel>> {
+            override fun onResponse(
+                call: Call<ArrayList<EventApiModel>>,
+                response: Response<ArrayList<EventApiModel>>
+            ) {
+
+
+                var loadEvents: ArrayList<EventApiModel>? = null
+
+                loadEvents?.clear()
+
+                loadEvents = (response.body() as ArrayList<EventApiModel>?)!!
+
+
+                if(loadEvents.count()>0) {
+
+                    var day_notif:String?=null
+                    var month_notif:String?=null
+                    var year_notif:String?=null
+                    var time_notif:String?=null
+
+                    loadEvents?.map {
+                        day_notif = it.day.toString()
+                        month_notif = it.month.toString()
+                        year_notif = it.year.toString()
+                        time_notif = it.timeStart.toString()
+
+                        Toast.makeText(context, " У Вас ${day_notif}.${month_notif}.${year_notif}г. в ${time_notif} запланировано мероприятие", Toast.LENGTH_LONG).show()
+
+                    }
+
+                }
+
+            }
+
+            override fun onFailure(call: Call<ArrayList<EventApiModel>>, t: Throwable) {
+                Toast.makeText(context, "ОШИБКА! ВКЛЮЧИТЕ ИНТЕРНЕТ!", Toast.LENGTH_SHORT).show()
+
+            }
+        })
+
     }
 
     override fun startMigration (user:String, context: Context) {
